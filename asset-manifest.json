@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/skvira-stend/static/css/main.7acaea2f.css",
+    "main.js": "/skvira-stend/static/js/main.7c2b3f5e.js",
+    "index.html": "/skvira-stend/index.html",
+    "main.7acaea2f.css.map": "/skvira-stend/static/css/main.7acaea2f.css.map",
+    "main.7c2b3f5e.js.map": "/skvira-stend/static/js/main.7c2b3f5e.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.7acaea2f.css",
+    "static/js/main.7c2b3f5e.js"
+  ]
+}
