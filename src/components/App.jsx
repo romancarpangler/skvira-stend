@@ -1,16 +1,15 @@
 export const App = () => {
+  const handleSubmit = e => {
+    e.preventDefault();
+    const data = e.currentTarget.elements.data.value;
+    console.log(data);
+  };
   return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101'
-      }}
-    >
-      React homework template
+    <div>
+      <form onSubmit={handleSubmit}>
+        <input name="data" type="datetime-local" />
+        <button>gggggggggg</button>
+      </form>
     </div>
   );
 };
