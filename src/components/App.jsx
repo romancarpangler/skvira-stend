@@ -1,15 +1,28 @@
+import { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { AppBar } from './AppBar';
+import { AddedTask } from './FormAddedTask';
+import { TaskList } from './TaskList';
+import css from '../css/App.module.css';
+import { modalIsOpenAdd, isLoading } from '../redux/selector';
+import { fetchTask } from 'operations';
+
 export const App = () => {
-  const handleSubmit = e => {
-    e.preventDefault();
-    const data = e.currentTarget.elements.data.value;
-    console.log(data);
-  };
+  const modalAdd = useSelector(modalIsOpenAdd);
+  const isLoadings = useSelector(isLoading);
+  const dispath = useDispatch();
+
+  useEffect(() => {
+    dispath(fetchTask());
+  }, [dispath]);
+
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <input name="data" type="datetime-local" />
-        <button>gggggggggg</button>
-      </form>
+    <div className={css.div}>
+      <AppBar></AppBar>
+      {isLoadings && <h1 className={css.div2}>Завантаження...</h1>}
+      {modalAdd && <AddedTask />}
+
+      {!isLoadings && <TaskList></TaskList>}
     </div>
   );
 };

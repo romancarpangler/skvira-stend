@@ -1,0 +1,22 @@
+.wrraper {
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  margin-bottom: 30px;
+}
+
+.input {
+  margin-left: 15px;
+}
+.button1 {
+  width: 80px;
+  margin-left: auto;
+  margin-bottom: 20px;
+}
+.button2 {
+  width: 80px;
+  margin-left: auto;
+  margin-right: auto;
+}
