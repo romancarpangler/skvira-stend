@@ -1,10 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { fetchTask, addTask, deleteTask } from 'operations';
+import { fetchTask, addTask, deleteTask } from 'asuncOperations';
 
 const tasksSlices = createSlice({
   name: 'slise',
   initialState: {
     task: [],
+    isLogin: false,
     isLoading: false,
     addTaskModalIsOpen: false,
   },
@@ -14,6 +15,9 @@ const tasksSlices = createSlice({
     },
     closeModalAdd(state) {
       state.addTaskModalIsOpen = false;
+    },
+    isLogin(state) {
+      state.isLogin = true;
     },
   },
   extraReducers: builder =>
@@ -37,9 +41,4 @@ const tasksSlices = createSlice({
 });
 
 export const tasksSlice = tasksSlices.reducer;
-export const {
-  openModalAdd,
-  closeModalAdd,
-  openModalDeleteTask,
-  closeModalDeleteTask,
-} = tasksSlices.actions;
+export const { isLogin, openModalAdd, closeModalAdd } = tasksSlices.actions;

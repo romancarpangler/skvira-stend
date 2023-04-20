@@ -1,10 +1,17 @@
 .div {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   gap: 25px;
   border-bottom: 1px solid black;
   padding-bottom: 5px;
+}
+.div2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .h1 {

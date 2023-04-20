@@ -1,12 +1,14 @@
 import { useSelector } from 'react-redux';
 import { task } from '../redux/selector';
 import { useDispatch } from 'react-redux';
-import { deleteTask } from 'operations';
+import { deleteTask } from 'asuncOperations';
 import css from '../css/taskList.module.css';
+import { isLogin } from 'redux/selector';
 
 export const TaskList = () => {
   const dispath = useDispatch();
   const todo = useSelector(task);
+  const login = useSelector(isLogin);
 
   const tasks = [...todo].sort((a, b) => a.data.d - b.data.d);
 
@@ -24,7 +26,6 @@ export const TaskList = () => {
   const render = [day1, day2, day3, day4].every(
     elem => Boolean(elem) === false
   );
-  console.log(Boolean(render));
 
   const arr1 = tasks
     .filter(x => x.data.d === day1)
@@ -82,14 +83,16 @@ export const TaskList = () => {
                 <p>
                   години служіння з {number(h)} до {number(h) + 1}
                 </p>
-                <button
-                  type="button"
-                  onClick={() => {
-                    dispath(deleteTask(id));
-                  }}
-                >
-                  видалити запис
-                </button>
+                {login && (
+                  <button
+                    type="button"
+                    onClick={() => {
+                      dispath(deleteTask(id));
+                    }}
+                  >
+                    видалити запис
+                  </button>
+                )}
               </li>
             );
           })}
@@ -107,14 +110,16 @@ export const TaskList = () => {
                 <p>
                   години служіння з {number(h)} до {number(h) + 1}
                 </p>
-                <button
-                  type="button"
-                  onClick={() => {
-                    dispath(deleteTask(id));
-                  }}
-                >
-                  видалити запис
-                </button>
+                {login && (
+                  <button
+                    type="button"
+                    onClick={() => {
+                      dispath(deleteTask(id));
+                    }}
+                  >
+                    видалити запис
+                  </button>
+                )}
               </li>
             );
           })}
@@ -132,14 +137,16 @@ export const TaskList = () => {
                 <p>
                   години служіння з {number(h)} до {number(h) + 1}
                 </p>
-                <button
-                  type="button"
-                  onClick={() => {
-                    dispath(deleteTask(id));
-                  }}
-                >
-                  видалити запис
-                </button>
+                {login && (
+                  <button
+                    type="button"
+                    onClick={() => {
+                      dispath(deleteTask(id));
+                    }}
+                  >
+                    видалити запис
+                  </button>
+                )}
               </li>
             );
           })}
@@ -157,14 +164,16 @@ export const TaskList = () => {
                 <p>
                   години служіння з {number(h)} до {number(h) + 1}
                 </p>
-                <button
-                  type="button"
-                  onClick={() => {
-                    dispath(deleteTask(id));
-                  }}
-                >
-                  видалити запис
-                </button>
+                {login && (
+                  <button
+                    type="button"
+                    onClick={() => {
+                      dispath(deleteTask(id));
+                    }}
+                  >
+                    видалити запис
+                  </button>
+                )}
               </li>
             );
           })}

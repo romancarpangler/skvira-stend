@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { closeModalAdd } from '../redux/slise';
 import { useSelector } from 'react-redux';
 import { task } from '../redux/selector';
-import { addTask } from 'operations';
+import { addTask } from 'asuncOperations';
 import Notiflix from 'notiflix';
 import css from '../css/addedTask.module.css';
 
@@ -38,7 +38,7 @@ export const AddedTask = () => {
     };
     e.preventDefault();
     const date = e.currentTarget.elements.date.value;
-    const name = e.currentTarget.elements.name.value;
+    const name = e.currentTarget.elements.name.value.trim();
 
     const data = {
       data: {

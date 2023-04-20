@@ -1,11 +1,13 @@
 import { useEffect } from 'react';
+import { Routes, Route } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { AppBar } from './AppBar';
 import { AddedTask } from './FormAddedTask';
 import { TaskList } from './TaskList';
 import css from '../css/App.module.css';
 import { modalIsOpenAdd, isLoading } from '../redux/selector';
-import { fetchTask } from 'operations';
+import { fetchTask } from 'asuncOperations';
+import { Login } from './Login';
 
 export const App = () => {
   const modalAdd = useSelector(modalIsOpenAdd);
@@ -19,10 +21,14 @@ export const App = () => {
   return (
     <div className={css.div}>
       <AppBar></AppBar>
+      <Routes>
+        <Route path="/login" element={<Login></Login>} />
+        <Route path="/task" element={<TaskList></TaskList>} />
+        <Route path="*" element={<TaskList></TaskList>} />
+      </Routes>
+
       {isLoadings && <h1 className={css.div2}>Завантаження...</h1>}
       {modalAdd && <AddedTask />}
-
-      {!isLoadings && <TaskList></TaskList>}
     </div>
   );
 };
