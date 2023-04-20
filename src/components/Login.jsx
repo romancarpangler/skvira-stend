@@ -8,7 +8,7 @@ export const Login = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    const data = e.currentTarget.elements.data.value;
+    const data = e.currentTarget.elements.data.value.toLowerCase();
     if (data === 'qwerty') {
       dispath(isLogin());
       e.currentTarget.reset();
