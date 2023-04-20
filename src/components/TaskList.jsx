@@ -12,29 +12,31 @@ export const TaskList = () => {
 
   const day = todo.map(x => x.data.d);
 
-  const filterArr = day
+  const filterday = day
     .filter((course, index, array) => array.indexOf(course) === index)
     .sort();
 
-  const num1 = filterArr[0];
-  const num2 = filterArr[1];
-  const num3 = filterArr[2];
-  const num4 = filterArr[3];
+  const day1 = filterday[0];
+  const day2 = filterday[1];
+  const day3 = filterday[2];
+  const day4 = filterday[3];
+
+  const render = day1 && day2 && day3 && day4;
 
   const arr1 = tasks
-    .filter(x => x.data.d === num1)
+    .filter(x => x.data.d === day1)
     .sort((a, b) => a.data.h - b.data.h);
 
   const arr2 = tasks
-    .filter(x => x.data.d === num2)
+    .filter(x => x.data.d === day2)
     .sort((a, b) => a.data.h - b.data.h);
 
   const arr3 = tasks
-    .filter(x => x.data.d === num3)
+    .filter(x => x.data.d === day3)
     .sort((a, b) => a.data.h - b.data.h);
 
   const arr4 = tasks
-    .filter(x => x.data.d === num4)
+    .filter(x => x.data.d === day4)
     .sort((a, b) => a.data.h - b.data.h);
 
   const number = x => {
@@ -63,99 +65,108 @@ export const TaskList = () => {
   };
 
   return (
-    <div className={css.wraperr}>
-      <ul className={css.ul}>
-        <h1 className={css.h1}>{number(num1) || 'запишіться на стенд 😢'}</h1>
-        {arr1.map(({ id, data }) => {
-          const { name, h } = data;
+    <div>
+      {!render && <h3 className={css.h3}>записів немає 😢</h3>}
+      {day1 && (
+        <ul className={css.ul}>
+          <h1 className={css.h1}>{`${day1}.04`}</h1>
+          {arr1.map(({ id, data }) => {
+            const { name, h } = data;
 
-          return (
-            <li key={id} className={css.li}>
-              <h3>{name}</h3>
-              <p>
-                години служіння з {number(h)} до {number(h) + 1}
-              </p>
-              <button
-                type="button"
-                onClick={() => {
-                  dispath(deleteTask(id));
-                }}
-              >
-                видалити запис
-              </button>
-            </li>
-          );
-        })}
-      </ul>
-      <ul className={css.ul}>
-        <h1 className={css.h1}>{number(num2) || 'запишіться на стенд 😢'}</h1>
-        {arr2.map(({ id, data }) => {
-          const { name, h } = data;
+            return (
+              <li key={id} className={css.li}>
+                <h3>{name}</h3>
+                <p>
+                  години служіння з {number(h)} до {number(h) + 1}
+                </p>
+                <button
+                  type="button"
+                  onClick={() => {
+                    dispath(deleteTask(id));
+                  }}
+                >
+                  видалити запис
+                </button>
+              </li>
+            );
+          })}
+        </ul>
+      )}
+      {day2 && (
+        <ul className={css.ul}>
+          <h1 className={css.h1}>{`${day2}.04`}</h1>
+          {arr2.map(({ id, data }) => {
+            const { name, h } = data;
 
-          return (
-            <li key={id} className={css.li}>
-              <h3>{name}</h3>
-              <p>
-                години служіння з {number(h)} до {number(h) + 1}
-              </p>
-              <button
-                type="button"
-                onClick={() => {
-                  dispath(deleteTask(id));
-                }}
-              >
-                видалити запис
-              </button>
-            </li>
-          );
-        })}
-      </ul>
-      <ul className={css.ul}>
-        <h1 className={css.h1}>{number(num3) || 'запишіться на стенд 😢'}</h1>
-        {arr3.map(({ id, data }) => {
-          const { name, h } = data;
+            return (
+              <li key={id} className={css.li}>
+                <h3>{name}</h3>
+                <p>
+                  години служіння з {number(h)} до {number(h) + 1}
+                </p>
+                <button
+                  type="button"
+                  onClick={() => {
+                    dispath(deleteTask(id));
+                  }}
+                >
+                  видалити запис
+                </button>
+              </li>
+            );
+          })}
+        </ul>
+      )}
+      {day3 && (
+        <ul className={css.ul}>
+          <h1 className={css.h1}>{`${day3}.04`}</h1>
+          {arr3.map(({ id, data }) => {
+            const { name, h } = data;
 
-          return (
-            <li key={id} className={css.li}>
-              <h3>{name}</h3>
-              <p>
-                години служіння з {number(h)} до {number(h) + 1}
-              </p>
-              <button
-                type="button"
-                onClick={() => {
-                  dispath(deleteTask(id));
-                }}
-              >
-                видалити запис
-              </button>
-            </li>
-          );
-        })}
-      </ul>
-      <ul className={css.ul}>
-        <h1 className={css.h1}>{number(num4) || 'запишіться на стенд 😢'}</h1>
-        {arr4.map(({ id, data }) => {
-          const { name, h } = data;
+            return (
+              <li key={id} className={css.li}>
+                <h3>{name}</h3>
+                <p>
+                  години служіння з {number(h)} до {number(h) + 1}
+                </p>
+                <button
+                  type="button"
+                  onClick={() => {
+                    dispath(deleteTask(id));
+                  }}
+                >
+                  видалити запис
+                </button>
+              </li>
+            );
+          })}
+        </ul>
+      )}
+      {day4 && (
+        <ul className={css.ul}>
+          <h1 className={css.h1}>{`${day4}.04`}</h1>
+          {arr4.map(({ id, data }) => {
+            const { name, h } = data;
 
-          return (
-            <li key={id} className={css.li}>
-              <h3>{name}</h3>
-              <p>
-                години служіння з {number(h)} до {number(h) + 1}
-              </p>
-              <button
-                type="button"
-                onClick={() => {
-                  dispath(deleteTask(id));
-                }}
-              >
-                видалити запис
-              </button>
-            </li>
-          );
-        })}
-      </ul>
+            return (
+              <li key={id} className={css.li}>
+                <h3>{name}</h3>
+                <p>
+                  години служіння з {number(h)} до {number(h) + 1}
+                </p>
+                <button
+                  type="button"
+                  onClick={() => {
+                    dispath(deleteTask(id));
+                  }}
+                >
+                  видалити запис
+                </button>
+              </li>
+            );
+          })}
+        </ul>
+      )}
     </div>
   );
 };
