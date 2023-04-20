@@ -76,12 +76,20 @@ export const AddedTask = () => {
     const d = number(data.data.d);
     const h = number(data.data.h);
 
+    if (d === day) {
+      if (m === mounth) {
+        if (y === year) {
+          if (h <= hours) {
+            return alert('неправильна дата!');
+          }
+        }
+      }
+    }
+
     if (d >= day) {
       if (m >= mounth) {
         if (y >= year) {
-          if (h > hours) {
-            return dispatch(addTask(data));
-          }
+          return dispatch(addTask(data));
         }
       }
     }
