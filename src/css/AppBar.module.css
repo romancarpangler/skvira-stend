@@ -1,19 +1,18 @@
 .div {
+  position: static;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 25px;
   border-bottom: 1px solid black;
-  padding-bottom: 5px;
+  padding-bottom: 15px;
 }
 .div2 {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  gap: 20px;
+  position: absolute;
+  top: 1%;
+  left: 50%;
+  transform: translate(-50%);
 }
-
 .h1 {
   margin: 0;
 }

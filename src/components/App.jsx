@@ -8,6 +8,7 @@ import css from '../css/App.module.css';
 import { modalIsOpenAdd, isLoading } from '../redux/selector';
 import { fetchTask } from 'asuncOperations';
 import { Login } from './Login';
+import { RestrictedRoute } from './Routz';
 
 export const App = () => {
   const modalAdd = useSelector(modalIsOpenAdd);
@@ -22,7 +23,15 @@ export const App = () => {
     <div className={css.div}>
       <AppBar></AppBar>
       <Routes>
-        <Route path="/login" element={<Login></Login>} />
+        <Route
+          path="/login"
+          element={
+            <RestrictedRoute
+              component={<Login></Login>}
+              redirectTo="/task"
+            ></RestrictedRoute>
+          }
+        />
         <Route path="/task" element={<TaskList></TaskList>} />
         <Route path="*" element={<TaskList></TaskList>} />
       </Routes>

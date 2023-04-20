@@ -11,11 +11,12 @@ export const AppBar = () => {
   return (
     <>
       <div className={css.div}>
+        <Link to="/login">логін</Link>
         <div className={css.div2}>
-          <Link to="/login">логін</Link>
-          <Link to="/task">графік </Link>
+          <Link to="/task">
+            <h3 className={css.h1}>Cлужіня зі стендом</h3>
+          </Link>
         </div>
-        <h1 className={css.h1}>Cлужіня зі стендом</h1>
         {login && (
           <button
             onClick={() => {

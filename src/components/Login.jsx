@@ -9,12 +9,12 @@ export const Login = () => {
   const handleSubmit = e => {
     e.preventDefault();
     const data = e.currentTarget.elements.data.value.toLowerCase();
+    e.currentTarget.reset();
     if (data === 'qwerty') {
       dispath(isLogin());
-      e.currentTarget.reset();
       return Notiflix.Notify.success('вгадав', { timeout: 2000 });
     }
-    e.currentTarget.reset();
+
     return Notiflix.Notify.failure('неправильно!', { timeout: 2000 });
   };
 
