@@ -114,24 +114,31 @@ export const AddedTask = () => {
           >
             закрити
           </button>
-          <label className={css.label}>
-            хто та з ким
-            <input
-              name="name"
-              type="text"
-              placeholder="Василь.М - Сергій.А"
-              className={css.input}
-            ></input>
-          </label>
-          <label className={css.label}>
-            дата та час
-            <input
-              name="date"
-              type="datetime-local"
-              className={css.input}
-            ></input>
-          </label>
-
+          <div className={css.div1}>
+            <div className={css.div2}>
+              <label for="userName" className={css.label}>
+                хто та з ким
+              </label>
+              <input
+                id="userName"
+                name="name"
+                type="text"
+                placeholder="Василь.М - Сергій.А"
+                className={css.input}
+              ></input>
+            </div>
+            <div className={css.div2}>
+              <label for="date" className={css.label}>
+                дата та час
+              </label>
+              <input
+                id="date"
+                name="date"
+                type="datetime-local"
+                className={css.input}
+              ></input>
+            </div>
+          </div>
           <button className={css.button2} type="submit">
             додати
           </button>
