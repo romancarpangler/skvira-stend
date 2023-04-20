@@ -21,7 +21,10 @@ export const TaskList = () => {
   const day3 = filterday[2];
   const day4 = filterday[3];
 
-  const render = day1 && day2 && day3 && day4;
+  const render = [day1, day2, day3, day4].every(
+    elem => Boolean(elem) === false
+  );
+  console.log(Boolean(render));
 
   const arr1 = tasks
     .filter(x => x.data.d === day1)
@@ -66,7 +69,7 @@ export const TaskList = () => {
 
   return (
     <div>
-      {!render && <h3 className={css.h3}>записів немає 😢</h3>}
+      {render && <h3 className={css.h3}>записів немає 😢</h3>}
       {day1 && (
         <ul className={css.ul}>
           <h1 className={css.h1}>{`${day1}.04`}</h1>

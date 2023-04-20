@@ -69,25 +69,19 @@ export const AddedTask = () => {
     const year = getDate.getFullYear();
     const mounth = getDate.getMonth() + 1;
     const day = getDate.getDate();
-    const hour = getDate.getHours();
-    console.log('year', year);
-    console.log('mounth', mounth);
-    console.log('day', day);
-    console.log('hour', hour);
+    const hours = getDate.getHours();
 
     const y = number(data.data.y);
     const m = number(data.data.m);
     const d = number(data.data.d);
     const h = number(data.data.h);
-    console.log('y', y);
-    console.log('m', m);
-    console.log('d', d);
-    console.log('h', h);
 
     if (d >= day) {
       if (m >= mounth) {
         if (y >= year) {
-          return dispatch(addTask(data));
+          if (h > hours) {
+            return dispatch(addTask(data));
+          }
         }
       }
     }
