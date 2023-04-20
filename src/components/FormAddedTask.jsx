@@ -4,6 +4,7 @@ import { closeModalAdd } from '../redux/slise';
 import { useSelector } from 'react-redux';
 import { task } from '../redux/selector';
 import { addTask } from 'operations';
+import Notiflix from 'notiflix';
 import css from '../css/addedTask.module.css';
 
 export const AddedTask = () => {
@@ -50,18 +51,19 @@ export const AddedTask = () => {
     };
 
     if (!name) {
-      return alert('введіть імена!');
+      return Notiflix.Notify.failure('вкажіть імена', { timeout: 5000 });
     }
 
     if (!date) {
-      return alert('вкажіть дату!');
+      return Notiflix.Notify.failure('вкажіть дату!', { timeout: 5000 });
     }
 
     const hourSort = todo.some(elem => elem.data.h === data.data.h);
     const daySort = todo.some(elem => elem.data.d === data.data.d);
     if (hourSort && daySort) {
-      return alert(
-        `${data.data.d} числа на ${data.data.h} годину вже є запис!`
+      return Notiflix.Notify.failure(
+        `${data.data.d} числа на ${data.data.h} годину вже є запис!`,
+        { timeout: 5000 }
       );
     }
 
@@ -80,7 +82,9 @@ export const AddedTask = () => {
       if (m === mounth) {
         if (y === year) {
           if (h <= hours) {
-            return alert('неправильна дата!');
+            return Notiflix.Notify.failure('неправильна дата!', {
+              timeout: 5000,
+            });
           }
         }
       }
@@ -94,7 +98,7 @@ export const AddedTask = () => {
       }
     }
 
-    return alert('неправильна дата!');
+    return Notiflix.Notify.failure('неправильна дата!', { timeout: 5000 });
   };
 
   return (
