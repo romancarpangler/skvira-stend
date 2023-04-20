@@ -1,3 +1,7 @@
+.form {
+  width: 100%;
+}
+
 .wrraper {
   display: flex;
   flex-direction: column;

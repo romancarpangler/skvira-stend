@@ -103,7 +103,7 @@ export const AddedTask = () => {
 
   return (
     <ModalWindow>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className={css.form}>
         <div className={css.wrraper}>
           <button
             className={css.button1}
