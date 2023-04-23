@@ -8,6 +8,7 @@ const tasksSlices = createSlice({
     isLogin: false,
     isLoading: false,
     addTaskModalIsOpen: false,
+    deleteTaskModalIsOpen: false,
   },
   reducers: {
     openModalAdd(state) {
@@ -15,6 +16,12 @@ const tasksSlices = createSlice({
     },
     closeModalAdd(state) {
       state.addTaskModalIsOpen = false;
+    },
+    openModalDeleteTask(state) {
+      state.deleteTaskModalIsOpen = true;
+    },
+    closeModalDeleteTask(state) {
+      state.deleteTaskModalIsOpen = false;
     },
     isLogin(state) {
       state.isLogin = true;
@@ -37,8 +44,15 @@ const tasksSlices = createSlice({
       })
       .addCase(deleteTask.fulfilled, (state, action) => {
         state.task = state.task.filter(task => task.id !== action.payload.id);
+        state.deleteTaskModalIsOpen = false;
       }),
 });
 
 export const tasksSlice = tasksSlices.reducer;
-export const { isLogin, openModalAdd, closeModalAdd } = tasksSlices.actions;
+export const {
+  isLogin,
+  openModalAdd,
+  closeModalAdd,
+  openModalDeleteTask,
+  closeModalDeleteTask,
+} = tasksSlices.actions;

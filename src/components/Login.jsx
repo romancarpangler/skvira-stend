@@ -12,10 +12,10 @@ export const Login = () => {
     e.currentTarget.reset();
     if (data === 'qwerty') {
       dispath(isLogin());
-      return Notiflix.Notify.success('вгадав', { timeout: 2000 });
+      return Notiflix.Notify.success('вгадав', { timeout: 700 });
     }
 
-    return Notiflix.Notify.failure('неправильно!', { timeout: 2000 });
+    return Notiflix.Notify.failure('неправильно!', { timeout: 700 });
   };
 
   return (

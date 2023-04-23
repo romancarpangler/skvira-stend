@@ -5,3 +5,5 @@ export const isLoading = state => state.store.isLoading;
 export const isLogin = state => state.store.isLogin;
 
 export const modalIsOpenAdd = state => state.store.addTaskModalIsOpen;
+
+export const modalIsOpendelete = state => state.store.deleteTaskModalIsOpen;

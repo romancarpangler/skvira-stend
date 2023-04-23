@@ -8,7 +8,7 @@ import css from '../css/App.module.css';
 import { modalIsOpenAdd, isLoading } from '../redux/selector';
 import { fetchTask } from 'asuncOperations';
 import { Login } from './Login';
-import { RestrictedRoute } from './Routz';
+import { RestrictedRoute } from './RestrictedRoute';
 
 export const App = () => {
   const modalAdd = useSelector(modalIsOpenAdd);
