@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/skvira-stend/static/css/main.41bcd6a4.css",
-    "main.js": "/skvira-stend/static/js/main.886b867b.js",
+    "main.css": "/skvira-stend/static/css/main.148be424.css",
+    "main.js": "/skvira-stend/static/js/main.00f67171.js",
     "index.html": "/skvira-stend/index.html",
-    "main.41bcd6a4.css.map": "/skvira-stend/static/css/main.41bcd6a4.css.map",
-    "main.886b867b.js.map": "/skvira-stend/static/js/main.886b867b.js.map"
+    "main.148be424.css.map": "/skvira-stend/static/css/main.148be424.css.map",
+    "main.00f67171.js.map": "/skvira-stend/static/js/main.00f67171.js.map"
   },
   "entrypoints": [
-    "static/css/main.41bcd6a4.css",
-    "static/js/main.886b867b.js"
+    "static/css/main.148be424.css",
+    "static/js/main.00f67171.js"
   ]
 }
