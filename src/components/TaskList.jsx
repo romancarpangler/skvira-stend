@@ -1,19 +1,32 @@
 import { useSelector } from 'react-redux';
 import { task } from '../redux/selector';
 import { useDispatch } from 'react-redux';
-import { deleteTask } from 'asuncOperations';
 import css from '../css/taskList.module.css';
 import { isLogin } from 'redux/selector';
 import { number } from 'operation';
-import { ModalWindow } from './ModalWindow';
-import { modalIsOpendelete } from '../redux/selector';
-import { openModalDeleteTask, closeModalDeleteTask } from 'redux/slise';
+import { deleteTask } from '../asuncOperations';
+import Notiflix from 'notiflix';
+import { error, norm } from '../redux/selector';
 
 export const TaskList = () => {
   const dispath = useDispatch();
-  const modalDelete = useSelector(modalIsOpendelete);
+
   const todo = useSelector(task);
   const login = useSelector(isLogin);
+
+  const eror = useSelector(error);
+  const ok = useSelector(norm);
+
+  if (eror) {
+    Notiflix.Notify.failure('щось пішло не так, Мостіцкий все поламав', {
+      timeout: 5000,
+    });
+  }
+  if (ok) {
+    Notiflix.Notify.success('операція пройшла успішно', {
+      timeout: 5000,
+    });
+  }
 
   const tasks = [...todo].sort((a, b) => a.data.d - b.data.d);
 
@@ -56,6 +69,7 @@ export const TaskList = () => {
           <h1 className={css.h1}>{`${day1}.04`}</h1>
           {arr1.map(({ id, data }) => {
             const { name, h } = data;
+
             return (
               <li key={id} className={css.li}>
                 <h3>{name}</h3>
@@ -64,38 +78,14 @@ export const TaskList = () => {
                 </p>
                 {login && (
                   <button
+                    id={id}
                     type="button"
                     onClick={() => {
-                      dispath(openModalDeleteTask());
+                      dispath(deleteTask(id));
                     }}
                   >
                     видалити запис
                   </button>
-                )}
-                {modalDelete && (
-                  <ModalWindow>
-                    <p>ви точно хочете видалити запис 🫣 </p>
-                    <div className={css.f}>
-                      <button
-                        className={css.b}
-                        type="button"
-                        onClick={() => {
-                          dispath(closeModalDeleteTask());
-                        }}
-                      >
-                        ні
-                      </button>
-                      <button
-                        className={css.b}
-                        type="button"
-                        onClick={() => {
-                          dispath(deleteTask(id));
-                        }}
-                      >
-                        так
-                      </button>
-                    </div>
-                  </ModalWindow>
                 )}
               </li>
             );
@@ -118,32 +108,11 @@ export const TaskList = () => {
                   <button
                     type="button"
                     onClick={() => {
-                      dispath(openModalDeleteTask());
+                      dispath(deleteTask(id));
                     }}
                   >
                     видалити запис
                   </button>
-                )}
-                {modalDelete && (
-                  <ModalWindow>
-                    <p>ви точно хочете видалити запис 🫣 </p>
-                    <button
-                      type="button"
-                      onClick={() => {
-                        dispath(closeModalDeleteTask());
-                      }}
-                    >
-                      ні
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => {
-                        dispath(deleteTask(id));
-                      }}
-                    >
-                      так
-                    </button>
-                  </ModalWindow>
                 )}
               </li>
             );
@@ -166,32 +135,11 @@ export const TaskList = () => {
                   <button
                     type="button"
                     onClick={() => {
-                      dispath(openModalDeleteTask());
+                      dispath(deleteTask(id));
                     }}
                   >
                     видалити запис
                   </button>
-                )}
-                {modalDelete && (
-                  <ModalWindow>
-                    <p>ви точно хочете видалити запис 🫣 </p>
-                    <button
-                      type="button"
-                      onClick={() => {
-                        dispath(closeModalDeleteTask());
-                      }}
-                    >
-                      ні
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => {
-                        dispath(deleteTask(id));
-                      }}
-                    >
-                      так
-                    </button>
-                  </ModalWindow>
                 )}
               </li>
             );
@@ -214,32 +162,11 @@ export const TaskList = () => {
                   <button
                     type="button"
                     onClick={() => {
-                      dispath(openModalDeleteTask());
+                      dispath(deleteTask(id));
                     }}
                   >
                     видалити запис
                   </button>
-                )}
-                {modalDelete && (
-                  <ModalWindow>
-                    <p>ви точно хочете видалити запис 🫣 </p>
-                    <button
-                      type="button"
-                      onClick={() => {
-                        dispath(closeModalDeleteTask());
-                      }}
-                    >
-                      ні
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => {
-                        dispath(deleteTask(id));
-                      }}
-                    >
-                      так
-                    </button>
-                  </ModalWindow>
                 )}
               </li>
             );

@@ -5,14 +5,14 @@ import { AppBar } from './AppBar';
 import { AddedTask } from './FormAddedTask';
 import { TaskList } from './TaskList';
 import css from '../css/App.module.css';
-import { modalIsOpenAdd, isLoading } from '../redux/selector';
+import { modalIsOpenAdd } from '../redux/selector';
 import { fetchTask } from 'asuncOperations';
 import { Login } from './Login';
 import { RestrictedRoute } from './RestrictedRoute';
 
 export const App = () => {
   const modalAdd = useSelector(modalIsOpenAdd);
-  const isLoadings = useSelector(isLoading);
+
   const dispath = useDispatch();
 
   useEffect(() => {
@@ -36,7 +36,6 @@ export const App = () => {
         <Route path="*" element={<TaskList></TaskList>} />
       </Routes>
 
-      {isLoadings && <h1 className={css.div2}>Завантаження...</h1>}
       {modalAdd && <AddedTask />}
     </div>
   );

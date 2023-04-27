@@ -6,22 +6,18 @@ const tasksSlices = createSlice({
   initialState: {
     task: [],
     isLogin: false,
-    isLoading: false,
+    norm: false,
+    error: false,
     addTaskModalIsOpen: false,
-    deleteTaskModalIsOpen: false,
   },
   reducers: {
     openModalAdd(state) {
       state.addTaskModalIsOpen = true;
+      state.norm = false;
     },
     closeModalAdd(state) {
       state.addTaskModalIsOpen = false;
-    },
-    openModalDeleteTask(state) {
-      state.deleteTaskModalIsOpen = true;
-    },
-    closeModalDeleteTask(state) {
-      state.deleteTaskModalIsOpen = false;
+      state.norm = false;
     },
     isLogin(state) {
       state.isLogin = true;
@@ -29,30 +25,37 @@ const tasksSlices = createSlice({
   },
   extraReducers: builder =>
     builder
-      .addCase(fetchTask.pending, state => {
-        state.isLoading = true;
-      })
       .addCase(fetchTask.fulfilled, (state, action) => {
         state.isLoading = false;
         state.task = action.payload;
+      })
+      .addCase(fetchTask.rejected, state => {
+        state.error = true;
       })
       .addCase(addTask.pending, state => {
         state.addTaskModalIsOpen = false;
       })
       .addCase(addTask.fulfilled, (state, action) => {
+        state.norm = false;
         state.task.push(action.payload);
+        state.norm = true;
+      })
+      .addCase(addTask.rejected, state => {
+        state.error = true;
+        state.norm = false;
       })
       .addCase(deleteTask.fulfilled, (state, action) => {
+        state.norm = false;
         state.task = state.task.filter(task => task.id !== action.payload.id);
         state.deleteTaskModalIsOpen = false;
+        state.norm = true;
+      })
+      .addCase(deleteTask.rejected, state => {
+        state.error = true;
+        state.norm = false;
       }),
 });
 
 export const tasksSlice = tasksSlices.reducer;
-export const {
-  isLogin,
-  openModalAdd,
-  closeModalAdd,
-  openModalDeleteTask,
-  closeModalDeleteTask,
-} = tasksSlices.actions;
+export const { isLogin, openModalAdd, closeModalAdd, openModalDeleteTask } =
+  tasksSlices.actions;

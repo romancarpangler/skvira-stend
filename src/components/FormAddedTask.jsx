@@ -85,11 +85,15 @@ const FilterTask = (date, name, todo, dispatch) => {
     return Notiflix.Notify.failure('вкажіть дату!', { timeout: 5000 });
   }
 
-  const hourSort = todo.some(elem => elem.data.h === data.data.h);
-  const daySort = todo.some(elem => elem.data.d === data.data.d);
-  const month = todo.some(elem => elem.data.m === data.data.m);
+  const Sort = todo.some(
+    elem =>
+      elem.data.h === data.data.h &&
+      elem.data.d === data.data.d &&
+      elem.data.m === data.data.m &&
+      elem.data.y === data.data.y
+  );
 
-  if (hourSort && daySort && month) {
+  if (Sort) {
     return Notiflix.Notify.failure(
       `${data.data.d} числа на ${data.data.h} годину вже є запис!`,
       { timeout: 5000 }
@@ -111,7 +115,7 @@ const FilterTask = (date, name, todo, dispatch) => {
     return Notiflix.Notify.failure('після 12 години дня стенду нема!', {
       timeout: 5000,
     });
-  if (h < 7)
+  if (h <= 7)
     return Notiflix.Notify.failure('до 8 години ранку стенду нема!', {
       timeout: 5000,
     });
@@ -121,7 +125,7 @@ const FilterTask = (date, name, todo, dispatch) => {
   }
 
   if (d >= day || (d < day && m > mounth)) {
-    if (m >= mounth || (m > month && y > year)) {
+    if (m >= mounth || (m > mounth && y > year)) {
       if (y >= year) {
         return dispatch(addTask(data));
       }

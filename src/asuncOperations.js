@@ -23,9 +23,9 @@ export const addTask = createAsyncThunk('addTask', async (data, thunkAPI) => {
 
 export const deleteTask = createAsyncThunk(
   'deleteTask',
-  async (Id, thunkAPI) => {
+  async (id, thunkAPI) => {
     try {
-      const response = await axios.delete(`/stend/${Id}`);
+      const response = await axios.delete(`/stend/${id}`);
       return response.data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
