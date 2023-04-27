@@ -1,18 +1,12 @@
 import { useSelector } from 'react-redux';
 import { task } from '../redux/selector';
-import { useDispatch } from 'react-redux';
 import css from '../css/taskList.module.css';
-import { isLogin } from 'redux/selector';
-import { number } from 'operation';
-import { deleteTask } from '../asuncOperations';
 import Notiflix from 'notiflix';
 import { error, norm } from '../redux/selector';
+import { Task } from './Task';
 
 export const TaskList = () => {
-  const dispath = useDispatch();
-
   const todo = useSelector(task);
-  const login = useSelector(isLogin);
 
   const eror = useSelector(error);
   const ok = useSelector(norm);
@@ -24,7 +18,7 @@ export const TaskList = () => {
   }
   if (ok) {
     Notiflix.Notify.success('операція пройшла успішно', {
-      timeout: 5000,
+      timeout: 3000,
     });
   }
 
@@ -64,115 +58,10 @@ export const TaskList = () => {
   return (
     <div>
       {render && <h3 className={css.h3}>записів немає 😢</h3>}
-      {day1 && (
-        <ul className={css.ul}>
-          <h1 className={css.h1}>{`${day1}.04`}</h1>
-          {arr1.map(({ id, data }) => {
-            const { name, h } = data;
-
-            return (
-              <li key={id} className={css.li}>
-                <h3>{name}</h3>
-                <p>
-                  години служіння з {number(h)} до {number(h) + 1}
-                </p>
-                {login && (
-                  <button
-                    id={id}
-                    type="button"
-                    onClick={() => {
-                      dispath(deleteTask(id));
-                    }}
-                  >
-                    видалити запис
-                  </button>
-                )}
-              </li>
-            );
-          })}
-        </ul>
-      )}
-      {day2 && (
-        <ul className={css.ul}>
-          <h1 className={css.h1}>{`${day2}.04`}</h1>
-          {arr2.map(({ id, data }) => {
-            const { name, h } = data;
-
-            return (
-              <li key={id} className={css.li}>
-                <h3>{name}</h3>
-                <p>
-                  години служіння з {number(h)} до {number(h) + 1}
-                </p>
-                {login && (
-                  <button
-                    type="button"
-                    onClick={() => {
-                      dispath(deleteTask(id));
-                    }}
-                  >
-                    видалити запис
-                  </button>
-                )}
-              </li>
-            );
-          })}
-        </ul>
-      )}
-      {day3 && (
-        <ul className={css.ul}>
-          <h1 className={css.h1}>{`${day3}.04`}</h1>
-          {arr3.map(({ id, data }) => {
-            const { name, h } = data;
-
-            return (
-              <li key={id} className={css.li}>
-                <h3>{name}</h3>
-                <p>
-                  години служіння з {number(h)} до {number(h) + 1}
-                </p>
-                {login && (
-                  <button
-                    type="button"
-                    onClick={() => {
-                      dispath(deleteTask(id));
-                    }}
-                  >
-                    видалити запис
-                  </button>
-                )}
-              </li>
-            );
-          })}
-        </ul>
-      )}
-      {day4 && (
-        <ul className={css.ul}>
-          <h1 className={css.h1}>{`${day4}.04`}</h1>
-          {arr4.map(({ id, data }) => {
-            const { name, h } = data;
-
-            return (
-              <li key={id} className={css.li}>
-                <h3>{name}</h3>
-                <p>
-                  години служіння з {number(h)} до {number(h) + 1}
-                </p>
-                {login && (
-                  <button
-                    type="button"
-                    onClick={() => {
-                      dispath(deleteTask(id));
-                    }}
-                  >
-                    видалити запис
-                  </button>
-                )}
-              </li>
-            );
-          })}
-        </ul>
-      )}
+      {day1 && <Task day={day1} arr={arr1} mounth={'04'} />}
+      {day2 && <Task day={day2} arr={arr2} mounth={'04'} />}
+      {day3 && <Task day={day3} arr={arr3} mounth={'04'} />}
+      {day4 && <Task day={day4} arr={arr4} mounth={'04'} />}
     </div>
   );
 };
