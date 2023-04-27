@@ -57,11 +57,14 @@ export const TaskList = () => {
 
   return (
     <div>
-      {render && <h3 className={css.h3}>записів немає 😢</h3>}
-      {day1 && <Task day={day1} arr={arr1} mounth={'04'} />}
-      {day2 && <Task day={day2} arr={arr2} mounth={'04'} />}
-      {day3 && <Task day={day3} arr={arr3} mounth={'04'} />}
-      {day4 && <Task day={day4} arr={arr4} mounth={'04'} />}
+      {render &&
+        setTimeout(() => {
+          <h3 className={css.h3}>записів немає 😢</h3>;
+        })}
+      {day1 && <Task day={day1} arr={arr1} mounth={'05'} />}
+      {day2 && <Task day={day2} arr={arr2} mounth={'05'} />}
+      {day3 && <Task day={day3} arr={arr3} mounth={'05'} />}
+      {day4 && <Task day={day4} arr={arr4} mounth={'05'} />}
     </div>
   );
 };
