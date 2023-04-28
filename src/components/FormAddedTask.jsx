@@ -31,7 +31,7 @@ export const AddedTask = () => {
             }}
             type="button"
           >
-            закрити
+            закрити ✕
           </button>
           <div className={css.div1}>
             <div className={css.div2}>
@@ -59,7 +59,7 @@ export const AddedTask = () => {
             </div>
           </div>
           <button className={css.button2} type="submit">
-            додати
+            додати ✓
           </button>
         </div>
       </form>
