@@ -35,10 +35,6 @@ export const TaskList = () => {
   const day3 = filterday[2];
   const day4 = filterday[3];
 
-  const render = [day1, day2, day3, day4].every(
-    elem => Boolean(elem) === false
-  );
-
   const arr1 = tasks
     .filter(x => x.data.d === day1)
     .sort((a, b) => a.data.h - b.data.h);
@@ -54,6 +50,10 @@ export const TaskList = () => {
   const arr4 = tasks
     .filter(x => x.data.d === day4)
     .sort((a, b) => a.data.h - b.data.h);
+
+  const render = [day1, day2, day3, day4].every(
+    elem => Boolean(elem) === false
+  );
 
   return (
     <div>

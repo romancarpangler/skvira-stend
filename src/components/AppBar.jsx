@@ -11,7 +11,12 @@ export const AppBar = () => {
   return (
     <>
       <div className={css.div}>
-        <Link to="/login">логін</Link>
+        {!login && (
+          <Link className={css.login} to="/login">
+            логін
+          </Link>
+        )}
+
         <div className={css.div2}>
           <Link to="/task">
             <h3 className={css.h1}>Cлужіня зі стендом</h3>
@@ -25,7 +30,7 @@ export const AppBar = () => {
             className={css.button}
             type="button"
           >
-            записатися
+            записатися ✓
           </button>
         )}
       </div>

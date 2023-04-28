@@ -9,6 +9,7 @@ const tasksSlices = createSlice({
     norm: false,
     error: false,
     addTaskModalIsOpen: false,
+    deleteTaskModalIsOpen: false,
   },
   reducers: {
     openModalAdd(state) {
@@ -18,6 +19,13 @@ const tasksSlices = createSlice({
     closeModalAdd(state) {
       state.addTaskModalIsOpen = false;
       state.norm = false;
+    },
+    openModalDeleteTask(state) {
+      state.norm = false;
+      state.deleteTaskModalIsOpen = true;
+    },
+    closeModalDeleteTask(state) {
+      state.deleteTaskModalIsOpen = false;
     },
     isLogin(state) {
       state.isLogin = true;
@@ -57,5 +65,10 @@ const tasksSlices = createSlice({
 });
 
 export const tasksSlice = tasksSlices.reducer;
-export const { isLogin, openModalAdd, closeModalAdd, openModalDeleteTask } =
-  tasksSlices.actions;
+export const {
+  isLogin,
+  openModalAdd,
+  closeModalAdd,
+  openModalDeleteTask,
+  closeModalDeleteTask,
+} = tasksSlices.actions;
