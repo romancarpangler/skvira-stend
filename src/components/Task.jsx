@@ -1,7 +1,7 @@
 import { number } from 'operation';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteTask } from '../asuncOperations';
-import { isLogin, modalIsOpendelete } from 'redux/selector';
+import { isLogin } from 'redux/selector'; // modalIsOpendelete;
 // import { openModalDeleteTask, closeModalDeleteTask } from '../redux/slise';
 // import { ModalWindow } from './ModalWindow';
 import css from '../css/Task.module.css';
