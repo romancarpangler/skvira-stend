@@ -13,7 +13,7 @@ export const AppBar = () => {
       <div className={css.div}>
         {!login && (
           <Link className={css.login} to="/login">
-            логін
+            ← ← ← ← ← ← ←
           </Link>
         )}
 

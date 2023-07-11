@@ -20,8 +20,8 @@ export const Login = () => {
 
   return (
     <form className={css.form} onSubmit={handleSubmit}>
-      <label htmlFor="id">найващий в світі пароль, точно не qwerty</label>
-      <input name="data" type="text" id="id" />
+      <label htmlFor="id">найващий в світі пароль</label>
+      <input name="data" type="text" id="id" placeholder="qwerty" />
       <button className={css.button}>не нажимай!</button>
     </form>
   );

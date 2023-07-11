@@ -12,9 +12,12 @@ export const TaskList = () => {
   const ok = useSelector(norm);
 
   if (eror) {
-    Notiflix.Notify.failure('щось пішло не так, Мостіцкий все поламав', {
-      timeout: 5000,
-    });
+    Notiflix.Notify.failure(
+      'щось пішло не так, Мостіцкий все поламав, дзвоніть Рибаку в 3 години ночі',
+      {
+        timeout: 5000,
+      }
+    );
   }
   if (ok) {
     Notiflix.Notify.success('операція пройшла успішно', {
